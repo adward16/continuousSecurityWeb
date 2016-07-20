@@ -1,0 +1,30 @@
+{
+  "name": "continous-security",
+  "version": "1.0.0",
+  "description": "Demo code for integrating security tools into build pipelines.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wendyi/continuousSecurityWeb.git"
+  },
+  "keywords": [
+    "security",
+    "continuous-integration"
+  ],
+  "author": "Wendy Lynn Istvanick",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/wendyi/continuousSecurityWeb/issues"
+  },
+  "homepage": "https://github.com/wendyi/continuousSecurityWeb#readme",
+  "dependencies": {
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
