@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
+var helpers = require('./helpers.js');
+
 export default App;
 class App extends React.Component {
 	render() {
@@ -28,15 +30,24 @@ class Content extends React.Component {
 		super(props);
 
 		this.state = {
-			backend: 'None'
+			backend: 'None',
+			usages: 0
 		}
 	
 		this.selectBackend = this.selectBackend.bind(this);
 	}
 
-
 	selectBackend(backend) {
-		this.setState({backend: backend})
+		var _this = this;
+		this.serverRequest = 
+			helpers.getJavaConnection()
+				.then(function(result) {
+					_this.setState({
+						backend: backend,
+						usages: result.java.count
+					});
+				})
+
 	}
 
 	render() {
@@ -49,6 +60,7 @@ class Content extends React.Component {
 				<button onClick = {() =>
 					this.selectBackend('Ruby')}>Ruby</button>
 				<h2>Backend Selected: {this.state.backend}</h2>
+				<h2>Called {this.state.usages} Times</h2>
 			</div>
 		);
 	}
