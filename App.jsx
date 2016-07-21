@@ -34,33 +34,50 @@ class Content extends React.Component {
 			usages: 0
 		}
 	
-		this.selectBackend = this.selectBackend.bind(this);
+		this.selectCsharp = this.selectCsharp.bind(this);
+		this.selectJava = this.selectJava.bind(this);
+		this.selectRuby = this.selectRuby.bind(this);
 	}
 
-	selectBackend(backend) {
+	selectCsharp() {
 		var _this = this;
+		_this.setState({
+			backend: 'C-Sharp',
+			message: "Connection Not Yet Implemented"
+		})
+	}
+
+ 	selectJava() {
+ 		var _this = this;
 		this.serverRequest = 
 			helpers.getJavaConnection()
 				.then(function(result) {
 					_this.setState({
-						backend: backend,
-						usages: result.java.count
+						backend: 'Java',
+						message: 'Called ' + result.java.count + ' Times'
 					});
 				})
+	}
 
+	selectRuby() {
+		var _this = this;
+		_this.setState({
+			backend: 'Ruby',
+			message: 'Connection Not Yet Implemented'
+		})
 	}
 
 	render() {
 		return (
 			<div>
 				<button onClick = {() =>
-					this.selectBackend('C-Sharp')}>C#</button>
+					this.selectCsharp()}>C#</button>
 				<button onClick = {() =>
-					this.selectBackend('Java')}>Java</button>
+					this.selectJava()}>Java</button>
 				<button onClick = {() =>
-					this.selectBackend('Ruby')}>Ruby</button>
+					this.selectRuby()}>Ruby</button>
 				<h2>Backend Selected: {this.state.backend}</h2>
-				<h2>Called {this.state.usages} Times</h2>
+				<h2>{this.state.message}</h2>
 			</div>
 		);
 	}
